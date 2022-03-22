@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+// Java package details
+option java_multiple_files = true;
+option java_package = "uk.co.bulb.account";
+option java_outer_classname = "AccountProto";
+option objc_class_prefix = "RTG";
+
+package account;
+
+// define a service
+// Here, we demonstrate two types of rpc connection:
+//   - GetAccount demonstrates a unary connection (similar to a GET request in REST)
+//   - StreamIndustryIds demonstrates a client-side streaming connection (responses are streamed (server yields results, client iterate over iterator))
+service Account {
+  rpc GetAccount (GetAccountRequest) returns (GetAccountResponse) {}
+  rpc StreamIndustryIds(StreamIndustryIdsRequest) returns (stream StreamIndustryIdsResponse) {}
+}
+
+
+/*
+Type definitions:
+All fields are indexed. The idea is to append so the contract changes incrementally.
+- Enum's index starts at 0
+- message's index starts at 1
+ */
+
+enum Territory {
+  GB = 0;
+  ES = 1;
+  FR = 2;
+  US_TX = 3;
+}
+
+message GetAccountRequest {
+  int64 account_id = 1;
+}
+
+message GetAccountResponse {
+  int64 account_id = 1;
+  Territory territory = 2;
+  repeated int64 industry_ids = 3;
+  optional string email = 4;
+}
+
+message StreamIndustryIdsRequest{
+  int64 account_id = 1;
+}
+
+message StreamIndustryIdsResponse{
+  int64 industry_id = 1;
+}
