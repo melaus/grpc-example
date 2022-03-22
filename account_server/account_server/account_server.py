@@ -10,18 +10,21 @@ accounts = {
         account_id=123,
         territory=account_pb2.Territory.GB,
         industry_ids=(90001, 90002),
+        join_year=2018,
     ),
     456: account_pb2.GetAccountResponse(
         account_id=456,
         territory=account_pb2.Territory.GB,
         industry_ids=(90003,),
         email="456@gmail",
+        join_year=2020,
     ),
     789: account_pb2.GetAccountResponse(
         account_id=789,
         territory=account_pb2.Territory.GB,
         industry_ids=(90004, 90005, 90006, 90007, 90008),
         email="456@gmail",
+        join_year=2021,
     ),
 }
 

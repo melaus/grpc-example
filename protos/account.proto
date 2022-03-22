@@ -41,6 +41,7 @@ message GetAccountResponse {
   Territory territory = 2;
   repeated int64 industry_ids = 3;
   optional string email = 4;
+  int32 join_year = 5;
 }
 
 message StreamIndustryIdsRequest{

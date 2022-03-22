@@ -6,7 +6,10 @@ import account_pb2 as account__pb2
 
 
 class AccountStub(object):
-    """define "api" service
+    """define a service
+    Here, we demonstrate two types of rpc connection:
+    - GetAccount demonstrates a unary connection (similar to a GET request in REST)
+    - StreamIndustryIds demonstrates a client-side streaming connection (responses are streamed (server yields results, client iterate over iterator))
     """
 
     def __init__(self, channel):
@@ -28,7 +31,10 @@ class AccountStub(object):
 
 
 class AccountServicer(object):
-    """define "api" service
+    """define a service
+    Here, we demonstrate two types of rpc connection:
+    - GetAccount demonstrates a unary connection (similar to a GET request in REST)
+    - StreamIndustryIds demonstrates a client-side streaming connection (responses are streamed (server yields results, client iterate over iterator))
     """
 
     def GetAccount(self, request, context):
@@ -64,7 +70,10 @@ def add_AccountServicer_to_server(servicer, server):
 
  # This class is part of an EXPERIMENTAL API.
 class Account(object):
-    """define "api" service
+    """define a service
+    Here, we demonstrate two types of rpc connection:
+    - GetAccount demonstrates a unary connection (similar to a GET request in REST)
+    - StreamIndustryIds demonstrates a client-side streaming connection (responses are streamed (server yields results, client iterate over iterator))
     """
 
     @staticmethod
