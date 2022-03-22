@@ -42,11 +42,20 @@ class Account(account_pb2_grpc.AccountServicer):
         return accounts[request.account_id]
 
     def StreamIndustryIds(self, request: account_pb2.StreamIndustryIdsRequest, context):
+        """
+        Results are yielded here, so that clients can iterate over an iterator of responses, rather than sending large payloads
+        """
         for industry_id in industry_ids[request.account_id]:
             yield account_pb2.StreamIndustryIdsResponse(industry_id=industry_id)
 
 
 def serve():
+    """
+    This is a synchronous server. An async version using asyncio is available.
+
+    We create a server and add our Servicer implementation to the server,
+    and expose it at port 50051.
+    """
     server = grpc.server(ThreadPoolExecutor(max_workers=10))
     account_pb2_grpc.add_AccountServicer_to_server(Account(), server)
     server.add_insecure_port("[::]:50051")

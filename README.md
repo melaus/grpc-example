@@ -7,17 +7,22 @@ This repo contains:
 - A Python gRPC server implementation of `account.proto`
 - A Python gRPC stub (client) implementation of `account.proto`
 
+We implement two RPC methods to demonstrate:
+- `GetAccount` - a unary connection (like a REST GET request/response)
+- `StreamIndustryIds`  - a client-side streaming connection (streams responses as an iterator from server)
+
 There are three branches:
 - `main` 
   - original implementation
 - `01-update-server-with-new-fields` 
   - add a new field to `GetAccountResponse` and update server to return the new field
   - client should continue to work
-- `origin/02-update-client-to-use-new-contract` 
+- `02-update-client-to-use-new-contract` 
   - update client to implement new contract
 
 # Presentation Slides
-- [Internal access only](https://docs.google.com/presentation/d/1a8gHWwjPL0DS4docXKngc9zdWtMsI2dIf1dYiWbOn88/edit?usp=sharing)
+- [Google Slides (Internal access only)](https://docs.google.com/presentation/d/1a8gHWwjPL0DS4docXKngc9zdWtMsI2dIf1dYiWbOn88/edit?usp=sharing)
+- [Markdown version](./gRPC-python.md)
 
 # Develop
 
