@@ -55,20 +55,23 @@ class GetAccountResponse(google.protobuf.message.Message):
     TERRITORY_FIELD_NUMBER: builtins.int
     INDUSTRY_IDS_FIELD_NUMBER: builtins.int
     EMAIL_FIELD_NUMBER: builtins.int
+    JOIN_YEAR_FIELD_NUMBER: builtins.int
     account_id: builtins.int
     territory: global___Territory.ValueType
     @property
     def industry_ids(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.int]: ...
     email: typing.Text
+    join_year: builtins.int
     def __init__(self,
         *,
         account_id: builtins.int = ...,
         territory: global___Territory.ValueType = ...,
         industry_ids: typing.Optional[typing.Iterable[builtins.int]] = ...,
         email: typing.Optional[typing.Text] = ...,
+        join_year: builtins.int = ...,
         ) -> None: ...
     def HasField(self, field_name: typing_extensions.Literal["_email",b"_email","email",b"email"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal["_email",b"_email","account_id",b"account_id","email",b"email","industry_ids",b"industry_ids","territory",b"territory"]) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["_email",b"_email","account_id",b"account_id","email",b"email","industry_ids",b"industry_ids","join_year",b"join_year","territory",b"territory"]) -> None: ...
     def WhichOneof(self, oneof_group: typing_extensions.Literal["_email",b"_email"]) -> typing.Optional[typing_extensions.Literal["email"]]: ...
 global___GetAccountResponse = GetAccountResponse
 

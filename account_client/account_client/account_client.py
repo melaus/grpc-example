@@ -12,9 +12,13 @@ def get_account(stub: account_pb2_grpc.AccountStub, account_id: int):
     )
 
     # This demonstrates how we can check whether an optional field is set
-    has_email_field = response.HasField("email")
-    print(f"has_email_field? {has_email_field}")
-    print(response)
+    # Using the updated contract means we have access to the new field
+    if response.join_year == 2020:
+        has_email_field = response.HasField("email")
+        print(f"has_email_field? {has_email_field}")
+        print(response)
+    else:
+        print("Account has join year before 2020")
 
 
 def stream_industry_ids(stub: account_pb2_grpc.AccountStub, account_id: int):
