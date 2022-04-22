@@ -19,6 +19,9 @@ There are three branches:
   - client should continue to work
 - `02-update-client-to-use-new-contract` 
   - update client to implement new contract
+- `trial-betterproto`
+  - use `poetry`
+  - use `betterproto` rather than default `protoc`+plugins
 
 # Presentation Slides
 - [Google Slides (Internal access only)](https://docs.google.com/presentation/d/1a8gHWwjPL0DS4docXKngc9zdWtMsI2dIf1dYiWbOn88/edit?usp=sharing)
@@ -28,25 +31,16 @@ There are three branches:
 
 ## Step 1: Create a virutalenv and install dependencies
 
-Use your favourite tool to create virtual environment and install dependencies in `requirements.txt`.
+`poetry install`
 
 ## Step 2: Generate python types and classes based on account.proto
 
-In `./account_server/account_server` and `./account_client/account_client`, use the following command to generate three files:
-- `account_pb2.py`
-  - contains the generated message types and enums defined in the protobuf file 
-- `account_pb2_grpc.py`
-  - contains the generated service servicer (server) and stub (stub) abstract classes to be implemented
-- `account_pb2.pyi`
-  - contains mypy types using the plugin [`mypy_protobuf`](https://github.com/nipunn1313/mypy-protobuf)
+In `./account_server/account_server` and `./account_client/account_client`, use the following command to generate `account/__init__.py`:
 
 ```bash
-python -m grpc_tools.protoc \
+poetry run python -m grpc_tools.protoc \
   -I ../../protos \
-  --plugin=protoc-en-mypy=/Users/alanlau/.pyenv/shims/protoc-gen-mypy \
-  --mypy_out=. \
-  --python_out=. \
-  --grpc_python_out=. \
+  --python_betterproto_out=. \
   ../../protos/account.proto
 ```
 
@@ -62,5 +56,5 @@ They can be updated independently of each other in the case of new field or feat
 ## Step 4: Start server and client
 
 ```bash
-python account_[server|client].py
+poetry run python account_[server|client].py
 ```
